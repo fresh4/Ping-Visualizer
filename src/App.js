@@ -1,22 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { PingScatter } from './Components/ChartDiv';
+import data102 from './pyscripts/102.json'
+import data104 from './pyscripts/104.json'
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <PingScatter data={data102} label="102"/>
+        <PingScatter data={data104} label="104"/>
       </header>
     </div>
   );
