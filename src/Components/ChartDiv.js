@@ -17,13 +17,13 @@ export function PingScatter({data, label}) {
     return (
         <div className="App">
             <h1>{label}</h1>
-            <ScatterChart width={1000} height={250} margin={{left:0, right:50, top:20}}>
+            <ScatterChart width={1000} height={250} margin={{left:0, right:50, top:20}} data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
 
                 <XAxis unit="m" fontSize={15} interval={59} tickFormatter={(e) => e/60} />
                 <YAxis dataKey="x" unit="ms" fontSize={15}/>
                 <Scatter name={label} data={data} fill="#82ca9d" />
-                <Tooltip />
+                <Tooltip content={<PointTooltip/>} wrapperStyle={{ width: 200, backgroundColor: 'whitesmoke', color:"#282c34", fontSize:15, borderRadius: 3}}/>
             </ScatterChart>
             <p style={{"fontSize":16}}>Number of failed requests: {timeout} {timeoutTime !== null ? ` || Latest failed request: ${timeoutTime}` : ""} </p>
         </div>
@@ -42,7 +42,7 @@ export function PingLine({data, label}) {
             }
         }
     }, [data])
-    
+
     return (
         <div className="App">
             <h1>{label}</h1>
@@ -58,3 +58,15 @@ export function PingLine({data, label}) {
     );
 }
 
+function PointTooltip({ payload, label, active }) {
+    if(active){
+        var data = payload[0].payload
+        return(
+            <div className="custom-tooltip">
+                <p>Ping: {data.x}ms</p>
+                <p>{data.time}</p>
+            </div>
+        )
+    }
+    return null;
+}

@@ -1,6 +1,7 @@
 import os
 import json
 from time import sleep
+from datetime import datetime as dt
 
 
 ip = input("~IP addr: ")
@@ -24,6 +25,6 @@ while True:
     elif 'time=' in response:
         time = int(response.split('time=')[1].split('ms')[0])
     print(time)
-    data.append({"x": time})
+    data.append({"x": time, "time": dt.now().strftime("%I:%M:%S %p, %m/%d/%Y")})
     with open(f'{file}', "w") as datafile:
         json.dump(data, datafile)
