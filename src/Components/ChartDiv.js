@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, ScatterChart, CartesianGrid, Scatter, Tooltip, Label } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, ScatterChart, CartesianGrid, Scatter, Tooltip } from 'recharts';
 
 export function PingScatter({data, label}) {
     const [timeout, setTimeout] = useState(0)
@@ -8,7 +8,7 @@ export function PingScatter({data, label}) {
     useEffect(()=> {
         if(data.at(-1) !== undefined){
             if(data.at(-1)['x'] === 0){
-                setTimeout(timeout+1)
+                setTimeout(t => t+1)
                 setTimeoutTime(new Date().toLocaleString())
             }
         }
@@ -37,7 +37,7 @@ export function PingLine({data, label}) {
     useEffect(()=> {
         if(data.at(-1) !== undefined){
             if(data.at(-1)['x'] === 0){
-                setTimeout(timeout+1)
+                setTimeout(t => t+1)
                 setTimeoutTime(new Date().toLocaleString())
             }
         }
