@@ -20,8 +20,8 @@ export function PingScatter({data, label}) {
             <ScatterChart width={1000} height={250} margin={{left:0, right:50, top:20}} data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
 
-                <XAxis unit="m" fontSize={15} interval={59} tickFormatter={(e) => e/60} />
-                <YAxis dataKey="x" unit="ms" fontSize={15}/>
+                <XAxis unit="m" fontSize={15} interval={299} tickFormatter={(e) => e/60} />
+                <YAxis dataKey="x" unit="ms" fontSize={15} />
                 <Scatter name={label} data={data} fill="#82ca9d" />
                 <Tooltip content={<PointTooltip/>} wrapperStyle={{ width: 200, backgroundColor: 'whitesmoke', color:"#282c34", fontSize:15, borderRadius: 3}}/>
             </ScatterChart>
@@ -59,10 +59,10 @@ export function PingLine({data, label}) {
 }
 
 function PointTooltip({ payload, label, active }) {
-    if(active){
+    if(active && payload[0] !== undefined){
         var data = payload[0].payload
         return(
-            <div className="custom-tooltip">
+            <div>
                 <p>Ping: {data.x}ms</p>
                 <p>{data.time}</p>
             </div>
