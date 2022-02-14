@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { CanvasJSChart } from 'canvasjs-react-charts'
 import { LineChart, Line, XAxis, YAxis, ScatterChart, CartesianGrid, Scatter, Tooltip } from 'recharts';
 
 export function PingScatter({data, label}) {
@@ -69,4 +70,19 @@ function PointTooltip({ payload, label, active }) {
         )
     }
     return null;
+}
+
+export function PingScatter2({data, label, options}) {
+    return (
+        <CanvasJSChart options={{...options, title: {text: `${label} - Timeouts: ${CountLosses(data)}`}, data: [{type: "scatter", dataPoints: data}]}}/>
+    )
+}
+
+function CountLosses(data) {
+    var losses = 0;
+    data.forEach(element => {
+        if(element.y === 0)
+            losses++
+    });
+    return losses;
 }
