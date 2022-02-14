@@ -9,6 +9,7 @@ ip = input("~IP addr: ")
 if ip == "102": ip = "172.30.112.102"
 if ip == "103": ip = "172.30.112.103"
 if ip == "104": ip = "172.30.112.104"
+if ip == "105": ip = "172.30.112.105"
 
 file = input("~Filename to write to: ")
 f = open(file)
