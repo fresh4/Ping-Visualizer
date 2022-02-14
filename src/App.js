@@ -12,6 +12,7 @@ function App() {
       animationEnabled: true,
       exportEnabled: true,
       theme: "dark1",
+      axisY: [{maximum: 100}]
       // title: {text: "Data?"}
   }
       // data: [{type: "line", dataPoints: data102}]}
